@@ -52,7 +52,7 @@ export default function CalendarPreview({ onSelectEvent }) {
         {/* Top Header Bar with Scroll Reveal */}
         <div className="calendar-top-bar reveal-on-scroll">
           <div>
-            <span className="label-editorial">05 / HAPPENINGS</span>
+            <span className="label-editorial"><span className="label-num">05</span> / HAPPENINGS</span>
             <h2 className="mosaic-title">On the calendar.</h2>
           </div>
 

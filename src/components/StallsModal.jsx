@@ -116,7 +116,7 @@ export default function StallsModal({ isOpen, onClose }) {
                   <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: 500, color: 'var(--text-primary)' }}>
                     {stall.name}
                   </h3>
-                  <span style={{ fontSize: '0.6875rem', color: 'var(--accent-gold)', fontWeight: 700, letterSpacing: '0.08em' }}>
+                  <span style={{ fontSize: '0.6875rem', color: 'var(--accent-orange, #ea580c)', fontWeight: 700, letterSpacing: '0.08em' }}>
                     0{idx + 1}
                   </span>
                 </div>

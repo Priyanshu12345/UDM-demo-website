@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from './site/Logo';
 
@@ -28,28 +28,15 @@ export default function Header({ onExploreClick, isScrolled = false, scrollProgr
 
         {/* Center: Delicate Editorial Navigation */}
         <nav className="header-nav" aria-label="Main Navigation">
-          <a
-            href="#stalls"
-            className="nav-link"
-            onClick={(e) => {
-              e.preventDefault();
-              onExploreClick();
-            }}
-          >
-            STALLS
-          </a>
           <Link
-            to={isHome ? "#calendar" : "/#calendar"}
-            className="nav-link"
-            onClick={(e) => {
-              if (isHome) {
-                const el = document.getElementById('calendar');
-                if (el) {
-                  e.preventDefault();
-                  el.scrollIntoView({ behavior: 'smooth' });
-                }
-              }
-            }}
+            to="/menu"
+            className={`nav-link ${location.pathname === '/menu' ? 'active-link' : ''}`}
+          >
+            MENU
+          </Link>
+          <Link
+            to="/calendar"
+            className={`nav-link ${location.pathname === '/calendar' ? 'active-link' : ''}`}
           >
             CALENDAR
           </Link>
@@ -130,17 +117,9 @@ export default function Header({ onExploreClick, isScrolled = false, scrollProgr
             <Link to="/" className="mobile-nav-item" onClick={closeMobileMenu}>
               Home
             </Link>
-            <a
-              href="#stalls"
-              className="mobile-nav-item"
-              onClick={(e) => {
-                e.preventDefault();
-                closeMobileMenu();
-                onExploreClick();
-              }}
-            >
-              Ten Stalls
-            </a>
+            <Link to="/menu" className="mobile-nav-item" onClick={closeMobileMenu}>
+              Menu &amp; Stalls
+            </Link>
             <Link to="/private-events" className="mobile-nav-item" onClick={closeMobileMenu}>
               Private Events
             </Link>
@@ -163,11 +142,7 @@ export default function Header({ onExploreClick, isScrolled = false, scrollProgr
             >
               Our Philosophy
             </Link>
-            <Link
-              to={isHome ? "#calendar" : "/#calendar"}
-              className="mobile-nav-item"
-              onClick={closeMobileMenu}
-            >
+            <Link to="/calendar" className="mobile-nav-item" onClick={closeMobileMenu}>
               Events Calendar
             </Link>
             <Link

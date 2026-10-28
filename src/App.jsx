@@ -25,6 +25,8 @@ import PrivateEventsPage from './pages/PrivateEventsPage';
 import AsianNightMarketPage from './pages/AsianNightMarketPage';
 import FiestaFridayPage from './pages/FiestaFridayPage';
 import ThemedBrunchPage from './pages/ThemedBrunchPage';
+import CalendarPage from './pages/CalendarPage';
+import MenuPage from './pages/MenuPage';
 
 // Scroll and anchor helper on route navigation
 function RouteScrollManager({ lenisRef }) {
@@ -205,6 +207,14 @@ export default function App() {
           <Route
             path="/themed-brunch"
             element={<ThemedBrunchPage onExploreClick={() => setStallsModalOpen(true)} />}
+          />
+          <Route
+            path="/calendar"
+            element={<CalendarPage onExploreClick={() => setStallsModalOpen(true)} />}
+          />
+          <Route
+            path="/menu"
+            element={<MenuPage onExploreClick={() => setStallsModalOpen(true)} />}
           />
         </Routes>
 

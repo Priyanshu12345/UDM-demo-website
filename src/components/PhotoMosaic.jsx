@@ -6,7 +6,7 @@ export default function PhotoMosaic({ onExploreClick }) {
       <div className="site-container">
         {/* Header with Scroll Reveal */}
         <div className="mosaic-header reveal-on-scroll">
-          <span className="label-editorial">03 / THE SPACE</span>
+          <span className="label-editorial"><span className="label-num">03</span> / THE SPACE</span>
           <h2 className="mosaic-title">A market built for lingering.</h2>
         </div>
 

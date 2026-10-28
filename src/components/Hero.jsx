@@ -61,7 +61,7 @@ export default function Hero({ onExploreClick }) {
       targetRotY = 0;
     };
 
-    const tiltEl = tiltContainerRef.current;
+    const tiltEl = heroRef.current;  // listen on full section
     if (tiltEl && isFinePointer && !prefersReducedMotion) {
       tiltEl.addEventListener('pointermove', handlePointerMove);
       tiltEl.addEventListener('pointerleave', handlePointerLeave);
@@ -133,7 +133,7 @@ export default function Hero({ onExploreClick }) {
             {/* 1. Small uppercase eyebrow with rotated yellow diamond & generous letter spacing */}
             <div className="hero-eyebrow-wrap">
               <span className="eyebrow-diamond" aria-hidden="true" />
-              <span className="label hero-label">01 / URBAN DISTRICT MARKET</span>
+              <span className="label hero-label"><span className="label-num">01</span> / URBAN DISTRICT MARKET</span>
             </div>
 
             {/* 2. Reconstructed 3-Line Headline with line-by-line vertical masks */}

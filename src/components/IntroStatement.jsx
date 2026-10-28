@@ -94,7 +94,7 @@ export default function IntroStatement() {
         {/* Section Heading with Scroll Reveal */}
         <div className="intro-heading-wrap reveal-on-scroll">
           <h2 className="intro-philosophy-heading">
-            <span className="intro-heading-badge">02 /</span>
+            <span className="intro-heading-badge"><span className="label-num">02</span> /</span>
             <span className="intro-heading-text">OUR PHILOSOPHY</span>
           </h2>
           <div className="reveal-accent-line" />

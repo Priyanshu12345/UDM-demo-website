@@ -39,7 +39,7 @@ export default function EventsList({ onSelectEvent }) {
       <div className="site-container">
         {/* Header with Scroll Reveal */}
         <div className="events-section-header reveal-on-scroll">
-          <span className="label-editorial">04 / PROGRAMMING</span>
+          <span className="label-editorial"><span className="label-num">04</span> / PROGRAMMING</span>
           <h2 className="events-section-title">Something on, almost every week.</h2>
         </div>
 
