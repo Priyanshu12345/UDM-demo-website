@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from "react";
+import React, { useEffect } from "react";
 import Footer from "../components/Footer";
 
 const highlights = [
@@ -17,7 +17,7 @@ const press = [
 ];
 
 export default function AsianNightMarketPage({ onExploreClick }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  // scroll position handled by RouteScrollManager
   return (
     <div className="page-root">
       <main>
@@ -174,3 +174,4 @@ export default function AsianNightMarketPage({ onExploreClick }) {
     </div>
   );
 }
+

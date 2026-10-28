@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function PhotoMosaic({ onExploreClick }) {
   return (
@@ -90,15 +91,12 @@ export default function PhotoMosaic({ onExploreClick }) {
             </div>
 
             {/* Contrasting Honey-Yellow Content Panel with Float Offset */}
-            <div
+            <Link
+              to="/menu"
               className="mosaic-yellow-panel parallax-float reveal-on-scroll delay-200"
               data-float-speed="-0.04"
-              role="button"
-              tabIndex={0}
-              onClick={onExploreClick}
-              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onExploreClick()}
-              aria-label="View all 10 food stall concepts"
-              style={{ cursor: 'pointer' }}
+              aria-label="View all 10 food stall concepts and menus"
+              style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}
             >
               <div>
                 <span className="mosaic-yellow-tag">STALLS & KITCHENS</span>
@@ -117,7 +115,7 @@ export default function PhotoMosaic({ onExploreClick }) {
                   </svg>
                 </span>
               </div>
-            </div>
+            </Link>
 
             {/* Outdoor Patio Photograph with Distinct Parallax Speed */}
             <div

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import VenueMap from './VenueMap';
 
 export default function LocationSection() {
@@ -34,13 +35,10 @@ export default function LocationSection() {
                 <span className="btn-dot-gold" />
               </a>
 
-              <a
-                href="#hours"
+              <Link
+                to="/transit-parking"
                 className="btn-circle-arrow-link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('visit-hours-table')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                aria-label="Transit and parking information"
               >
                 <span>Transit & parking</span>
                 <span className="circle-arrow-icon">
@@ -48,7 +46,7 @@ export default function LocationSection() {
                     <path d="M2 12L12 2M12 2H4M12 2V10" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
-              </a>
+              </Link>
             </div>
 
             <div style={{ padding: '1.25rem', backgroundColor: 'var(--bg-canvas-alt)', borderLeft: '2px solid var(--accent-gold)', marginTop: '1.5rem', maxWidth: '440px' }}>

@@ -4,7 +4,7 @@ import path from 'path';
 const images = {
   // Hero: lively modern food hall interior with long communal tables, wood & ambient lights
   'hero-interior.jpg': 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=85',
-  
+
   // Section E Photo mosaic:
   // Main large left image: Food hall interior dining & stalls
   'mosaic-main.jpg': 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85',
@@ -55,3 +55,4 @@ async function downloadAll() {
 }
 
 downloadAll();
+

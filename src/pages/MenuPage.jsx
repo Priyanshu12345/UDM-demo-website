@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 
@@ -123,7 +123,7 @@ const STALLS = [
 ];
 
 export default function MenuPage({ onExploreClick }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  // scroll position handled by RouteScrollManager
   const [hoveredId, setHoveredId] = useState(null);
 
   return (
@@ -237,3 +237,4 @@ export default function MenuPage({ onExploreClick }) {
     </div>
   );
 }
+

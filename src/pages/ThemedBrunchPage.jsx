@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from "react";
+import React, { useEffect } from "react";
 import Footer from "../components/Footer";
 
 const monthlyThemes = [
@@ -22,7 +22,7 @@ const archiveImgs = [
 ];
 
 export default function ThemedBrunchPage({ onExploreClick }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  // scroll position handled by RouteScrollManager
   return (
     <div className="page-root">
       <main>
@@ -184,3 +184,4 @@ export default function ThemedBrunchPage({ onExploreClick }) {
     </div>
   );
 }
+

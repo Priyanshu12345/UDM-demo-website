@@ -16,7 +16,7 @@ const photos = [
 ];
 
 export default function PhotosPage({ onExploreClick }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  // scroll position handled by RouteScrollManager
   return (
     <div className="page-root">
       <main>
@@ -55,3 +55,4 @@ export default function PhotosPage({ onExploreClick }) {
     </div>
   );
 }
+

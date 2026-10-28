@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function LifestyleSection({ onExploreClick }) {
   return (
@@ -7,16 +8,19 @@ export default function LifestyleSection({ onExploreClick }) {
         <div className="lifestyle-grid">
           {/* Left: Tall Evening Market Atmosphere Photograph with Parallax Pan */}
           <div className="lifestyle-col-left">
-            <div
+            <Link
+              to="/photos"
               className="lifestyle-tall-img parallax-frame reveal-on-scroll"
               data-speed="0.13"
+              aria-label="View photo gallery"
+              style={{ display: 'block', textDecoration: 'none', cursor: 'pointer' }}
             >
               <img
                 src="/images/lifestyle-night.jpg"
                 alt="People enjoying an outdoor evening gathering under festoon string lights"
                 className="parallax-img"
               />
-            </div>
+            </Link>
           </div>
 
           {/* Middle: Editorial Text & Dark Pill CTA with Scroll Reveal */}
@@ -29,30 +33,32 @@ export default function LifestyleSection({ onExploreClick }) {
             </p>
 
             <div>
-              <button
-                type="button"
+              <Link
+                to="/photos"
                 className="btn-pill-dark"
-                onClick={onExploreClick}
-                aria-label="Explore the food hall and grounds"
+                aria-label="Explore the food hall and photos"
               >
                 <span>Explore the hall</span>
                 <span className="btn-dot-gold" />
-              </button>
+              </Link>
             </div>
           </div>
 
           {/* Right: Asymmetrical Offset Exterior Photograph with Counter Parallax */}
           <div className="lifestyle-col-right">
-            <div
+            <Link
+              to="/photos"
               className="lifestyle-exterior-img parallax-frame reveal-on-scroll delay-200"
               data-speed="-0.09"
+              aria-label="View photo gallery"
+              style={{ display: 'block', textDecoration: 'none', cursor: 'pointer' }}
             >
               <img
                 src="/images/lifestyle-exterior.jpg"
                 alt="Historic red brick exterior of Urban District Market in Charlotte"
                 className="parallax-img"
               />
-            </div>
+            </Link>
           </div>
         </div>
       </div>

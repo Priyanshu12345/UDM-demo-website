@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function EventsList({ onSelectEvent }) {
   const experiences = [
@@ -7,28 +8,32 @@ export default function EventsList({ onSelectEvent }) {
       title: 'Asian Night Market',
       meta: 'Every Third Friday · Street Food, Pop-ups & Performances',
       desc: 'An evening celebration inspired by the vibrant night markets of Taipei, Tokyo, and Seoul. Guest chefs, specialty skewers, bubble tea, and live cultural entertainment.',
-      date: 'Third Friday of Every Month · 6:00 PM – 10:00 PM'
+      date: 'Third Friday of Every Month · 6:00 PM – 10:00 PM',
+      path: '/asian-night-market'
     },
     {
       num: '02',
       title: 'Fiesta Friday',
       meta: 'Weekly 6pm – 10pm · Latin Beats & Beverage Specials',
       desc: 'Kick off your weekend with curated Latin tunes, artisanal margaritas, fresh street tacos, and great outdoor vibes on the courtyard patio.',
-      date: 'Every Friday Evening · 6:00 PM – 10:00 PM'
+      date: 'Every Friday Evening · 6:00 PM – 10:00 PM',
+      path: '/fiesta-friday'
     },
     {
       num: '03',
       title: 'Themed Brunch',
       meta: 'Sat & Sun Mornings · Specialty Coffee & Brunch Plates',
       desc: 'Weekend morning rendezvous featuring freshly baked mochi donuts, savory bao breakfast buns, specialty matcha, and brunch libations from LaBARatory.',
-      date: 'Saturdays & Sundays · 11:00 AM – 3:00 PM'
+      date: 'Saturdays & Sundays · 11:00 AM – 3:00 PM',
+      path: '/themed-brunch'
     },
     {
       num: '04',
       title: 'Private Events',
       meta: 'Custom Bookings · Buyouts, Corporate & Celebrations',
       desc: 'From intimate birthday dinners in private karaoke suites to full market buyouts with 350+ capacity, custom menus, and dedicated bartending.',
-      date: 'Available 7 Days a Week by Inquiry'
+      date: 'Available 7 Days a Week by Inquiry',
+      path: '/private-events'
     }
   ];
 
@@ -46,14 +51,11 @@ export default function EventsList({ onSelectEvent }) {
         {/* 4 Full-Width Editorial Rows with Staggered Scroll Reveals */}
         <div className="editorial-rows-list">
           {experiences.map((item, idx) => (
-            <div
+            <Link
               key={item.num}
+              to={item.path}
               className={`editorial-row reveal-on-scroll ${delays[idx] || ''}`}
-              role="button"
-              tabIndex={0}
-              onClick={() => onSelectEvent(item)}
-              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSelectEvent(item)}
-              aria-label={`View details for ${item.title}`}
+              aria-label={`View ${item.title} page`}
             >
               <span className="editorial-row-num">{item.num}</span>
               <h3 className="editorial-row-title">{item.title}</h3>
@@ -65,7 +67,7 @@ export default function EventsList({ onSelectEvent }) {
                   </svg>
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 import Header from './components/Header';
@@ -27,11 +27,42 @@ import FiestaFridayPage from './pages/FiestaFridayPage';
 import ThemedBrunchPage from './pages/ThemedBrunchPage';
 import CalendarPage from './pages/CalendarPage';
 import MenuPage from './pages/MenuPage';
+import TransitParkingPage from './pages/TransitParkingPage';
 
-// Scroll and anchor helper on route navigation
+// Scroll and anchor helper on route navigation with accurate scroll restoration
 function RouteScrollManager({ lenisRef }) {
   const { pathname, hash } = useLocation();
+  const navigationType = useNavigationType();
+  const scrollPositions = useRef({});
 
+  // Ensure browser native restoration doesn't clash with Lenis
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
+  // Continuously track scroll position for the active pathname
+  useEffect(() => {
+    const saveCurrentScroll = () => {
+      const y = lenisRef.current ? lenisRef.current.scroll : (window.scrollY || 0);
+      scrollPositions.current[pathname] = y;
+      try {
+        sessionStorage.setItem('scroll_pos_' + pathname, y.toString());
+      } catch {
+        // ignore storage errors
+      }
+    };
+
+    window.addEventListener('scroll', saveCurrentScroll, { passive: true });
+
+    return () => {
+      saveCurrentScroll();
+      window.removeEventListener('scroll', saveCurrentScroll);
+    };
+  }, [pathname, lenisRef]);
+
+  // Handle scroll position restoration on route change
   useEffect(() => {
     if (hash) {
       setTimeout(() => {
@@ -44,13 +75,52 @@ function RouteScrollManager({ lenisRef }) {
           }
         }
       }, 100);
-    } else {
-      if (lenisRef.current) {
-        lenisRef.current.scrollTo(0, { immediate: true });
-      }
-      window.scrollTo(0, 0);
+      return;
     }
-  }, [pathname, hash, lenisRef]);
+
+    if (navigationType === 'POP') {
+      // User pressed Back/Forward button
+      let targetY = scrollPositions.current[pathname];
+      if (targetY === undefined) {
+        try {
+          const stored = sessionStorage.getItem('scroll_pos_' + pathname);
+          if (stored !== null) {
+            targetY = parseFloat(stored);
+          }
+        } catch {
+          // ignore storage errors
+        }
+      }
+
+      if (typeof targetY === 'number' && !isNaN(targetY) && targetY > 0) {
+        const restore = () => {
+          if (lenisRef.current) {
+            lenisRef.current.scrollTo(targetY, { immediate: true });
+          }
+          window.scrollTo(0, targetY);
+        };
+
+        restore();
+        const rAF1 = requestAnimationFrame(restore);
+        const t1 = setTimeout(restore, 50);
+        const t2 = setTimeout(restore, 150);
+        const t3 = setTimeout(restore, 300);
+
+        return () => {
+          cancelAnimationFrame(rAF1);
+          clearTimeout(t1);
+          clearTimeout(t2);
+          clearTimeout(t3);
+        };
+      }
+    }
+
+    // New navigation (PUSH / REPLACE) without hash: start at top
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    }
+    window.scrollTo(0, 0);
+  }, [pathname, hash, navigationType, lenisRef]);
 
   return null;
 }
@@ -215,6 +285,14 @@ export default function App() {
           <Route
             path="/menu"
             element={<MenuPage onExploreClick={() => setStallsModalOpen(true)} />}
+          />
+          <Route
+            path="/transit-parking"
+            element={<TransitParkingPage onExploreClick={() => setStallsModalOpen(true)} />}
+          />
+          <Route
+            path="/parking"
+            element={<TransitParkingPage onExploreClick={() => setStallsModalOpen(true)} />}
           />
         </Routes>
 

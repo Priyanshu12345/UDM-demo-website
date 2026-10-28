@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 /**
  * Urban District Market — Hero Section
@@ -161,15 +162,14 @@ export default function Hero({ onExploreClick }) {
             </p>
 
             <div className="hero-actions hero-fade-up">
-              <button
-                type="button"
+              <Link
+                to="/menu"
                 className="btn-pill-dark"
-                onClick={onExploreClick}
-                aria-label="Explore all ten food stalls"
+                aria-label="Explore the menu"
               >
-                <span>Explore the stalls</span>
+                <span>Explore the menu</span>
                 <span className="btn-dot-gold" />
-              </button>
+              </Link>
 
               <a href="#visit" className="btn-circle-arrow-link" aria-label="Plan your visit to Urban District Market">
                 <span>Plan a visit</span>

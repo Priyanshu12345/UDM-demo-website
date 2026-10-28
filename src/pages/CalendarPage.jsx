@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 
@@ -340,7 +340,7 @@ const TAG_COLORS = {
 const CATEGORIES = ["ALL", "GAMES & SOCIAL", "FIESTA FRIDAY", "THEMED BRUNCH", "ASIAN NIGHT MARKET", "TRIVIA SERIES", "ARTISAN POP-UP", "SPECIAL EVENT"];
 
 export default function CalendarPage({ onExploreClick }) {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  // scroll position handled by RouteScrollManager
 
   const [activeFilter, setActiveFilter] = useState("ALL");
   const [activeMonth, setActiveMonth] = useState("ALL");
@@ -526,3 +526,4 @@ export default function CalendarPage({ onExploreClick }) {
     </div>
   );
 }
+

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function CalendarPreview({ onSelectEvent }) {
   const events = [
@@ -56,10 +57,9 @@ export default function CalendarPreview({ onSelectEvent }) {
             <h2 className="mosaic-title">On the calendar.</h2>
           </div>
 
-          <button
-            type="button"
+          <Link
+            to="/calendar"
             className="btn-circle-arrow-link"
-            onClick={() => onSelectEvent(events[0])}
             aria-label="View full events calendar"
           >
             <span>Full calendar</span>
@@ -68,20 +68,17 @@ export default function CalendarPreview({ onSelectEvent }) {
                 <path d="M2 12L12 2M12 2H4M12 2V10" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
-          </button>
+          </Link>
         </div>
 
         {/* 4 Compact Event Cards with Staggered Scroll Reveals */}
         <div className="calendar-grid">
           {events.map((evt, idx) => (
-            <article
+            <Link
               key={evt.id}
+              to="/calendar"
               className={`calendar-card reveal-on-scroll ${delays[idx] || ''}`}
-              onClick={() => onSelectEvent(evt)}
-              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSelectEvent(evt)}
-              tabIndex={0}
-              role="button"
-              aria-label={`View details for ${evt.title}`}
+              aria-label={`View ${evt.title} on full calendar`}
             >
               <div className="calendar-img-frame">
                 <img src={evt.img} alt={evt.title} loading="lazy" />
@@ -93,7 +90,7 @@ export default function CalendarPreview({ onSelectEvent }) {
                 <h3 className="calendar-card-title">{evt.title}</h3>
                 <p className="calendar-card-desc">{evt.desc}</p>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>
