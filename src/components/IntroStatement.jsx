@@ -108,13 +108,15 @@ export default function IntroStatement() {
             aria-label="“Bees create something unique with simple ingredients from a flower. Our food stalls are the result of busy bees looking to create something unique to serve the Queen City.”"
           >
             {QUOTE_WORDS.map((word, idx) => {
-              const step = 1 / QUOTE_WORDS.length;
-              const wordThreshold = idx * step;
+              const totalWords = QUOTE_WORDS.length;
+              const wordWindow = 0.08;
+              const maxTarget = 0.88;
+              const start = (idx / Math.max(1, totalWords - 1)) * (maxTarget - wordWindow);
               const wordProgress = Math.min(
                 1,
-                Math.max(0, (scrollProgress - wordThreshold) / (step * 2))
+                Math.max(0, (scrollProgress - start) / wordWindow)
               );
-              const isDark = wordProgress > 0.45;
+              const isDark = wordProgress > 0.35;
 
               return (
                 <span
